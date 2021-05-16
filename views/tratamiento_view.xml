@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+      
+
+<record model="ir.ui.view" id="view_hemodialisis_tratamiento_form">
+        <field name="name">hemodialisis_tratamiento_form</field>
+        <field name="model">hemodialisis_tratamiento</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Registro de Tratamiento">
+                <sheet>
+                 <notebook>
+                     <page string="Tratamiento">   
+                         <sheet>
+                             <hr style="width:100%; border-color:  #cadff6  ;"></hr>
+                             <separator colspan="4" string="Identificación Paciente / Médico y Maquina Utilizada" style="font-size:14px;"/>
+
+                             <group col="4" colspan="2">
+                                 <field name="hemodialisis_paciente_id" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'/>
+                                 <field name="nombre_paciente" attrs="{'readonly': True}"/>
+                             </group>
+                             <group col="2" colspan="2">    
+                                 <field name="hemodialisis_medico_id" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'/>
+                                 <field name="hemodialisis_maquina_id" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'/>
+                             </group> 
+
+                             <hr style="width:100%; border-color:  #cadff6  ;"></hr>
+                             <separator colspan="4" string="Información Tratamiento" style="font-size:14px;"/>
+                                                         
+                             <group col="4" colspan="2">
+                                 <field name="fecha_tratamiento"/>
+                                 <field name="duracion"/>
+                                 <field name="Peso_pre_hd"/>
+                                 <field name="Peso_post_hd"/>
+                                 <field name="balance"/>
+                             </group> 
+
+                             <group col="4" colspan="2">
+                                 
+                                 <field name="ta_pre"/>
+                                 <field name="ta_post"/>
+                                 <field name="heparina"/>
+                                 <field name="transfución"/>
+                             </group> 
+                             
+                             <group col="2" colspan="2">
+                                 <field name="observacion"/>
+                             </group> 
+                         </sheet>
+                         
+                         
+                     </page> 
+                     
+                    </notebook>
+               </sheet>
+            </form>
+        </field>
+</record>
+    
+    
+<record model="ir.ui.view" id="view_tratamiento_tree">
+
+      <field name="name">hemodialisis_tratamiento_tree</field>
+      <field name="model">hemodialisis_tratamiento</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+         <tree string="Registro de Tratamiento">
+             <field name="fecha_tratamiento"/>
+             <field name="hemodialisis_paciente_id"/>
+             <field name="nombre_paciente"/>
+             <field name="hemodialisis_paciente_id"/>
+             <field name="hemodialisis_medico_id"/>
+         </tree>
+     </field>
+
+</record>
+
+         <!--    
+            <menuitem name="Remsion" id="menu_remision" parent="menu_p" action="bienes_remision_action"/>
+         
+   
+        <menuitem name="Reporte por Oficinas" id="menu_reportes" parent="menu_p"/>
+        <menuitem name="Inventario Sudebip"   id="menu_reportes" parent="menu_p"/>
+
+
+        <menuitem id="menu_jasper_informes" name="Informes Jasper" parent="menu_p"/>
+                  <menuitem
+                    parent="menu_jasper_informes"
+                    action="action_menu_jasper_oficinas_bienes"
+                    id="menu_jasper_report_oficinas"
+                />
+-->
+
+
+            
+            
+        
+<!--
+            <menuitem name="Selecionar Oficina" id="menu_oficrep" parent="menu_reportes" action="action_oficrep"/>
+-->             
+            
+                
+            
+        
+            
+            
+            
+            
+      
+</data>
+</odoo>

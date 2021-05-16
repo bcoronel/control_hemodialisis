@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+      
+
+<record model="ir.ui.view" id="view_hemodialisis_paciente_form">
+        <field name="name">hemodialisis_paciente_form</field>
+        <field name="model">hemodialisis_paciente</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Registro de Paciente">
+                <sheet>
+                 <notebook>
+                     <page string="Pacientes">   
+                         <sheet>
+                             <group col="2" colspan="2">
+                                 <field name="cedula"/>
+                                 <field name="nombre"/>
+                                 <field name="fecha_nacimiento"/>
+                                 <field name="edad"/>
+                             </group> 
+                         </sheet>
+                         
+                         
+                     </page> 
+                     
+                     <page string="Hemodialisis del paciente">   
+                         <sheet>
+                             <group col="2" colspan="2">
+                                 <field name="hemodialisis_tratamiento_ids" attrs="{'readonly':True}" />
+                             </group> 
+                         </sheet>
+                     </page>                     
+                             
+                    </notebook>
+               </sheet>
+            </form>
+        </field>
+</record>
+    
+    
+<record model="ir.ui.view" id="view_hemodialisis_paciente_tree">
+
+      <field name="name">hemodialisis_paciente_tree</field>
+      <field name="model">hemodialisis_paciente</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+         <tree string="Registro de Pacientes">
+             <field name="cedula"/>
+             <field name="nombre"/>
+             <field name="fecha_nacimiento"/>
+             <field name="edad"/>
+         </tree>
+     </field>
+
+</record>
+
+  
+            
+            
+            
+            
+      
+</data>
+</odoo>

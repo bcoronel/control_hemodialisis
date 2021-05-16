@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+      
+
+<record model="ir.ui.view" id="view_hemodialisis_medico_form">
+        <field name="name">hemodialisis_medico_form</field>
+        <field name="model">hemodialisis_medico</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Registro de Médico">
+                <sheet>
+                 <notebook>
+                     <page string="Médico">   
+                         <sheet>
+                             <group col="2" colspan="2">
+                                 <field name="cedula"/>
+                                 <field name="nombre"/>
+                             </group> 
+                         </sheet>
+                     </page>         
+                    </notebook>
+               </sheet>
+            </form>
+        </field>
+</record>
+    
+    
+<record model="ir.ui.view" id="view_hemodialisis_medico_tree">
+
+      <field name="name">hemodialisis_medico_tree</field>
+      <field name="model">hemodialisis_medico</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+         <tree string="Registro de Médico">
+             <field name="cedula"/>
+             <field name="nombre"/>
+         </tree>
+     </field>
+
+</record>
+
+        
+            
+            
+            
+      
+</data>
+</odoo>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+      
+
+
+<!-- action -->
+
+
+    <!-- action de paciente --> 
+    <record model="ir.actions.act_window" id="action_paciente">
+        <field name="name">Registro Paciente</field>
+        <field name="res_model">hemodialisis_paciente</field>
+        <field name="view_mode">tree,form</field>
+   </record>
+
+
+    <!-- action de Medico --> 
+    <record model="ir.actions.act_window" id="action_medico">
+        <field name="name">Registro Médico</field>
+        <field name="res_model">hemodialisis_medico</field>
+        <field name="view_mode">tree,form</field>
+   </record>    
+    
+    <!-- action de Maquina --> 
+    <record model="ir.actions.act_window" id="action_maquina">
+        <field name="name">Registro Maquina</field>
+        <field name="res_model">hemodialisis_maquina</field>
+        <field name="view_mode">tree,form</field>
+   </record> 
+
+    <!-- action de tratamiento --> 
+    <record model="ir.actions.act_window" id="action_tratamiento">
+        <field name="name">Registro Tratamiento</field>
+        <field name="res_model">hemodialisis_tratamiento</field>
+        <field name="view_mode">tree,form</field>
+   </record> 
+
+
+<!-- Fin action-->    
+
+
+<!-- Menu del Sistema-->
+
+        
+    <menuitem name="Control de Hemodialisis" id="menu_p" web_icon="bienes,static/description/bienes.png"/>
+        
+        
+        <!-- Menu Principal Control Hemodilisis-->
+        <menuitem name="Información Registro" id="menu_registro" parent="menu_p" />
+      
+        <!-- Menu de Paciente -->
+            <menuitem name="Registro Paciente" id="menu_registro_paciente" parent="menu_registro" action="action_paciente"/>
+        <!-- Medico -->
+            <menuitem name="Registro Médico" id="menu_registro_medico" parent="menu_registro" action="action_medico"/>
+
+        <!-- Maquina -->
+            <menuitem name="Registro Maquina" id="menu_registro_maquina" parent="menu_registro" action="action_maquina"/>
+
+
+
+        <!-- Menu Principal Control Hemodilisis-->
+        <menuitem name="Control de Hemodialisis" id="menu_registro" parent="menu_p" />
+      
+        <!-- Menu de Paciente -->
+            <menuitem name="Registro Tratamiento" id="menu_registro_tratamiento" parent="menu_registro" action="action_tratamiento"/>
+
+
+
+<!--  Fin de menu -->  
+
+
+
+         <!--    
+            <menuitem name="Remsion" id="menu_remision" parent="menu_p" action="bienes_remision_action"/>
+         
+   
+        <menuitem name="Reporte por Oficinas" id="menu_reportes" parent="menu_p"/>
+        <menuitem name="Inventario Sudebip"   id="menu_reportes" parent="menu_p"/>
+
+
+        <menuitem id="menu_jasper_informes" name="Informes Jasper" parent="menu_p"/>
+                  <menuitem
+                    parent="menu_jasper_informes"
+                    action="action_menu_jasper_oficinas_bienes"
+                    id="menu_jasper_report_oficinas"
+                />
+-->
+
+
+            
+            
+        
+<!--
+            <menuitem name="Selecionar Oficina" id="menu_oficrep" parent="menu_reportes" action="action_oficrep"/>
+-->             
+            
+                
+            
+        
+            
+            
+            
+            
+      
+</data>
+</odoo>

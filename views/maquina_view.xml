@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+      
+
+<record model="ir.ui.view" id="view_hemodialisis_maquina_form">
+        <field name="name">hemodialisis_maquina_form</field>
+        <field name="model">hemodialisis_maquina</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Registro de Maquina de Hemodialisis">
+                <sheet>
+                 <notebook>
+                     <page string="Maquina">   
+                         <sheet>
+                             <group col="2" colspan="4">
+                                 <field name="codigo"/>
+                                 <field name="serial"/>
+                                 <field name="operatividad"/>
+                                 <field name="observación"/>
+                             </group> 
+                         </sheet>
+                     </page>         
+                    </notebook>
+               </sheet>
+            </form>
+        </field>
+</record>
+    
+    
+<record model="ir.ui.view" id="view_hemodialisis_medico_tree">
+
+      <field name="name">hemodialisis_maquina_tree</field>
+      <field name="model">hemodialisis_maquina</field>
+      <field name="type">tree</field>
+      <field name="arch" type="xml">
+         <tree string="Registro de Maquina">
+             <field name="codigo"/>
+             <field name="serial"/>
+             <field name="operatividad"/>
+             <field name="observación"/>
+         </tree>
+     </field>
+
+</record>
+
+        
+            
+            
+            
+      
+</data>
+</odoo>
