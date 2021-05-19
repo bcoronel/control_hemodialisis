@@ -37,22 +37,25 @@ class tratamiento(models.Model):
     hemodialisis_paciente_id = fields.Many2one('hemodialisis_paciente','Paciente', required=True, 
                                                 help='Id del Paciente')
     nombre_paciente = fields.Char(string='Nombre Paciente', size=40)                                            
-    hemodialisis_medico_id = fields.Many2one('hemodialisis_medico','Médico', required=True, 
-                                                help='Id del Medico')
     hemodialisis_maquina_id = fields.Many2one('hemodialisis_maquina','Maquina', required=True, 
                                                 help='Id de la Maquina')
                                                                                             
-    fecha_tratamiento = fields.Date(string = 'Fecha Tratamiento', required=True, help='Fecha Tratamiento')
-    duracion = fields.Float(string="Duración", help='Registra la duración',digits=(2,2))
-    Peso_pre_hd = fields.Float(string="Peso PRE-HD", help='Registra peso PRE-HD', digits=(3,2))
-    Peso_post_hd = fields.Float(string="Peso PRE-POST", help='Registra peso POST-HD', digits=(3,2))
-    balance = fields.Char(string='Balance')
-    ta_pre = fields.Char(string='TA-PRE', size=10)
-    ta_post = fields.Char(string='TA-POST', size=10)
-    heparina = fields.Char(string='Heparina', size=10)
-    transfución = fields.Boolean(string='Transfución', default = False)
+    fecha_tratamiento = fields.Date(string = 'Fecha Tratamiento', required=True, help='Fecha Tratamiento',
+                               default = date.today().strftime('%Y-%m-%d'))
+    duracion = fields.Float(string="Duración", help='Registra la duración',digits=(2,2), required=True)
+    peso_pre_hd = fields.Float(string="Peso PRE-HD", help='Registra peso PRE-HD', digits=(3,2), required=True)
+    peso_post_hd = fields.Float(string="Peso PRE-POST", help='Registra peso POST-HD', digits=(3,2), required=True)
+    balance = fields.Char(string='Balance', required=True)
+    ta_pre = fields.Char(string='TA-PRE', size=10, required=True)
+    ta_post = fields.Char(string='TA-POST', size=10, required=True)
+    heparina = fields.Boolean(string='Heparina', default=False)
+    transfucion = fields.Boolean(string='Transfución', default = False)
+    tratamiento_pre = fields.Text(string="Tratamiento PRE")
+    tratamiento_post = fields.Text(string="Tratamiento POST")
     observacion = fields.Text(string='Observación')
-
+    
+    _sql_constraints = [('hemodialisis_tratamiento_id', 'unique(hemodialisis_paciente_id, fecha_tratamiento)', 'El Paciente ya fué Dialisado en esa Fecha de Tratamiento')]  
+    _order = 'fecha_tratamiento' 
 
     @api.onchange('hemodialisis_paciente_id')
     def generar_nombre(self):
@@ -60,5 +63,21 @@ class tratamiento(models.Model):
             self.nombre_paciente = self.hemodialisis_paciente_id.nombre
             
             
-            
-            
+    @api.onchange('fecha_tratamiento')
+    def val_fecha_tratamiento(self):
+        if self.fecha_tratamiento:
+            fechaActual = datetime.now().date()
+            fechaTratamiento = self.fecha_tratamiento
+            if fechaTratamiento > fechaActual:
+                self.fecha_tratamiento = fechaActual
+                res = {}
+                mensaje = "La Fecha Del Tratamiento no puede ser superior a la Fecha Actual"  
+                warning = {
+                    'title': "Advertencia!",
+                    'message': mensaje,
+                }
+                res.update({
+                'warning':warning
+                })
+                return res
+                

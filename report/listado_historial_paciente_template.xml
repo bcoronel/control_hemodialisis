@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<report
+  id="action_report_historial_paciente"
+  string="Listado Historial del Paciente"
+  model="hemodialisis.reporte.historial.paciente.wizard"
+  report_type="qweb-html"
+  name="hemodialisis.listado_historial_paciente_render"
+  file="hemodialisis.listado_historial_paciente_template"
+  
+  menu="False"/>
+  
+  <!--paperformat="hemodialisis.paperformat_listado_historial_paciente"-->
+
+
+<template id="listado_historial_paciente_render">
+    <t t-call="web.html_container">    
+        <t t-call="web.external_layout">
+            <t t-set='linea' t-value='0'/>
+            <t t-set='sw_inicio' t-value='0'/>  
+            <t t-set='conclusion' t-value='0'/>
+            <t t-set='nro' t-value='0'/> 
+                     
+            <t t-foreach="docs" t-as="paciente">
+                <t t-set='nro' t-value='nro+1'/>
+                <t t-set='linea' t-value='linea+1'/>
+
+                <div class="page">    
+                    <t t-if="sw_inicio==0">
+                        <t t-set='sw_inicio' t-value='1'/>
+                        <t t-set='conclusion' t-value='paciente[&quot;conclusiones&quot;]'/>
+                        <t t-call="hemodialisis.encabezado_reporte_historial_paciente"></t>
+                        <br/>
+                        <span style="font-size:14px; font-weight:700; margin-left:1px">CEDULA: </span>
+                        <span t-esc="paciente['cedula']" style="font-size:14px; margin-left:2px "/>
+                        <span style="font-size:14px; font-weight:700; margin-left:1px"> / APELLIDO(S), NOMBRE(S): </span>
+                        <t t-set='cadena' t-value='paciente["nombre"]'/>
+                        <span t-esc="mayuscula(cadena)" style="font-size:14px; margin-left:2px "/>
+                        <br/>
+                    
+                        <table style="border:1px solid black; width:100%">
+                        <tr style=" height:50px" align="center">
+                            <td style="border:1px solid black; width:4%" >
+                                <span style="font-size:12px; font-weight:700;">N° </span>
+                            </td>
+                            <td style="border:1px solid black; width:7%" >
+                                <span style="font-size:12px; font-weight:700;">FECHA </span>
+                            </td> 
+                            <td style="border:1px solid black; width:8%" >
+                                <span style="font-size:12px; font-weight:700;">DURACIÓN </span>
+                            </td> 
+                            <td style="border:1px solid black; width:8%" >
+                                <span style="font-size:12px; font-weight:700;">PESO PRE HD </span>
+                            </td> 
+                            <td style="border:1px solid black; width:9%" >
+                                <span style="font-size:12px; font-weight:700;">PESO POST HD </span>
+                            </td>                            
+                            
+                            <td style="border:1px solid black; width:8%" >
+                                <span style="font-size:12px; font-weight:700;">BALANCE </span>
+                            </td> 
+                            
+                            <td style="border:1px solid black; width:7%" >
+                                <span style="font-size:12px; font-weight:700;">TA-PRE </span>
+                            </td> 
+
+                            <td style="border:1px solid black; width:7%" >
+                                <span style="font-size:12px; font-weight:700;">TA-POST </span>
+                            </td> 
+
+                            <td style="border:1px solid black; width:8%" >
+                                <span style="font-size:12px; font-weight:700;">HEPARINA </span>
+                            </td> 
+                            <td style="border:1px solid black; width:8%" >
+                                <span style="font-size:12px; font-weight:700;">TRANSFUCIÖN </span>
+                            </td> 
+
+                            <td style="border:1px solid black; width:26%" >
+                                <span style="font-size:12px; font-weight:700;">OBSERVACIONES </span>
+                            </td>                            
+                        </tr>
+                        </table>    
+                    </t>                      
+
+                      
+                    <table style="border:1px solid black; width:100%">
+                    <tr style=" height:45px" align="center">
+                        <td style="border:1px solid black; width:4%" >
+                            <span t-esc="nro" style="font-size:12px; align:center "/>
+                        </td>
+                        <td style="border:1px solid black; width:7%" >
+                            <t t-set='fecha' t-value='paciente["fecha_tratamiento"]'/>
+                            <span t-esc="fecha_formato(fecha)" style="font-size:12px; align:center"/>
+                        </td> 
+                        <td style="border:1px solid black; width:8%" >
+                            <span t-esc="paciente['duracion']" style="font-size:12px; align:center"/>
+                        </td> 
+                        <td style="border:1px solid black; width:8%" >
+                            <span t-esc="paciente['peso_pre_hd']" style="font-size:12px; align:center"/>
+                        </td> 
+                        <td style="border:1px solid black; width:9%" >
+                            <span t-esc="paciente['peso_post_hd']" style="font-size:12px; align:center"/>
+                        </td>                            
+                        
+                        <td style="border:1px solid black; width:8%" >
+                            <span t-esc="paciente['balance']" style="font-size:12px; align:center"/>
+                        </td> 
+                        
+                        <td style="border:1px solid black; width:7%" >
+                            <span t-esc="paciente['ta_pre']" style="font-size:12px; align:center"/>
+                        </td> 
+
+                        <td style="border:1px solid black; width:7%" >
+                            <span t-esc="paciente['ta_post']" style="font-size:12px; align:center"/>
+                        </td> 
+
+                        <td style="border:1px solid black; width:8%" >
+                            <t t-if='paciente["heparina"] == True'>
+                                <span style="font-size:12px; align:center">SI </span>
+                            </t>
+                            <t t-else="">
+                                <span style="font-size:12px; align:center">NO </span>
+                            </t>    
+                            
+                        </td> 
+                        <td style="border:1px solid black; width:8%" >
+                            <t t-if='paciente["transfucion"] == True'>
+                                <span style="font-size:12px; align:center">SI </span>
+                            </t>
+                            <t t-else="">
+                                <span style="font-size:12px; align:center">NO </span>
+                            </t>    
+
+                        </td> 
+
+                        <td style="border:1px solid black; width:26%; line-height:15px" >
+                            <t t-set='observa' t-value='paciente["observacion"]'/>
+                            <span t-esc="m_observacion(observa)" style="font-size:12px; align:center"/>
+                        </td>              
+                    </tr>
+                    </table>   
+                    
+                    <t t-if='linea==9'>
+						<div style='page-break-after: always;'></div>                                       
+						<t t-set='linea' t-value='0'/>  
+                        <t t-set='sw_inicio' t-value='0'/>    
+                    </t> 
+                </div>    
+            </t>
+            
+                      
+            
+            
+            
+        </t>
+    </t>              
+</template>
+
+
+<record id="paperformat_listado_historial_paciente" model="report.paperformat">
+    <field name="name">European A4</field>
+    <field name="default" eval="True" />
+    <field name="format">A4</field>
+    <field name="page_height">0</field>
+    <field name="page_width">0</field>
+    <!--<field name="orientation">Portrait</field>-->
+    <field name="orientation">Landscape</field>
+    <field name="margin_top">35</field>
+    <field name="margin_bottom">20</field>
+    <field name="margin_left">5</field>
+    <field name="margin_right">5</field>
+    <field name="header_line" eval="False" />
+    <field name="header_spacing">25</field>
+    <field name="dpi">90</field>
+</record>
+
+
+</odoo>
+

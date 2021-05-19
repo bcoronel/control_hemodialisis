@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+<template id="encabezado_reporte_historial_paciente">
+        <div style="text-align:left">
+            <span style="font-weight:700"><small>FECHA: </small></span><small t-esc="date_today"/>
+        </div> 
+        <br/>       
+        <div style="text-align:center">
+            <span style="font-weight:700; font-size:16px" t-esc="titulo"/>
+        </div>
+        <table style="border:1px solid black; width:100%">
+        <tr>
+            <td style="border:1px solid black; height:20px">
+                <t t-if='sw_fecha == 0'>
+                    <span style="font-size:14px; font-weight:700; margin-left:1px">FECHA SESIÓN: </span>
+                    <span t-esc="intervalo" style="font-size:14px; margin-left:2px "/>
+                </t>
+                <t t-else="">
+                    <span style="font-size:14px; font-weight:700; margin-left:1px">INTERVALO FECHA SESIÓN: </span>
+                    <span t-esc="intervalo" style="font-size:14px; margin-left:2px "/>
+                </t>    
+            </td>
+        </tr>
+        </table>
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</odoo>
+

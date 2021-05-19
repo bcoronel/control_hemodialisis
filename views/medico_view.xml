@@ -18,7 +18,16 @@
                                  <field name="nombre"/>
                              </group> 
                          </sheet>
-                     </page>         
+                     </page>    
+                     <page string="Pacientes">   
+                         <sheet>
+                             <group col="2" colspan="2">
+                                 <field name="hemodialisis_paciente_ids" attrs="{'readonly':True}" />
+                                  
+                             </group> 
+                         </sheet>
+                     </page>                      
+                          
                     </notebook>
                </sheet>
             </form>
@@ -35,6 +44,7 @@
          <tree string="Registro de Médico">
              <field name="cedula"/>
              <field name="nombre"/>
+             <field name="hemodialisis_paciente_ids" string="Nro Pacientes"/>
          </tree>
      </field>
 

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     
+
+<record model="ir.ui.view" id="hemodialisis_reporte_historial_paciente_wizard_form">
+        <field name="name">hemodialisis_reporte_historial_paciente_wizard_form</field>
+        <field name="model">hemodialisis.reporte.historial.paciente.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Listado Historial de Paciente">
+                <sheet>
+                    <group>
+                      <field name="paciente_id"/>
+                      <field name="nombre_paciente" attrs="{'readonly':True}" 
+                             options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'/>
+                      
+                    </group>
+                    <hr style="width:100%; border-color:  #cadff6  ;"> </hr>
+                    <!--<group>
+                        <field name="intervalo_fecha"/> 
+                    </group>--> 
+                    <group>   
+                        <field name="fecha_desde"/>
+                        <field name="fecha_hasta"/>
+                    </group> 
+
+                </sheet>
+            
+                <footer>
+                    <button name="action_report_historial_paciente" type="object" 
+                            string="Generar Listado" class="oe_highlight"/>
+
+                    <button special="cancel" type="object" 
+                        string="Cancelar" class="oe_link oe_inline"/>
+                            
+                </footer>
+            </form>
+        </field>
+</record>
+    
+        <!-- reportes -->
+    <record model="ir.actions.act_window" id="action_hemodialisis_reporte_historial_paciente_wizard">
+            <field name="name">Listado Historial de Paciente</field>
+            <field name="res_model">hemodialisis.reporte.historial.paciente.wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name='view_mode'>form</field>
+            <field name='view_id' ref="hemodialisis_reporte_historial_paciente_wizard_form"/>
+            <field name='target'>new</field>
+    </record>  
+
+
+    <!--Menu de Reportes -->
+   
+        <menuitem name="Listado Historial de Paciente" 
+              id="menu_hemodialisis_reporte_historial_paciente_wizard"
+              action="action_hemodialisis_reporte_historial_paciente_wizard"
+              parent="menu_control_hemodialisis"/>
+
+      
+
+</odoo>

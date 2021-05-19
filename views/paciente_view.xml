@@ -18,6 +18,7 @@
                                  <field name="nombre"/>
                                  <field name="fecha_nacimiento"/>
                                  <field name="edad"/>
+                                 <field name="hemodialisis_medico_id" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}' />
                              </group> 
                          </sheet>
                          
@@ -28,6 +29,7 @@
                          <sheet>
                              <group col="2" colspan="2">
                                  <field name="hemodialisis_tratamiento_ids" attrs="{'readonly':True}" />
+                                  
                              </group> 
                          </sheet>
                      </page>                     
@@ -50,6 +52,7 @@
              <field name="nombre"/>
              <field name="fecha_nacimiento"/>
              <field name="edad"/>
+             <field name="hemodialisis_medico_id"/>
          </tree>
      </field>
 

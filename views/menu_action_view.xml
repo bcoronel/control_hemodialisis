@@ -37,6 +37,17 @@
    </record> 
 
 
+
+  
+    
+    
+    
+    
+
+    
+    
+
+
 <!-- Fin action-->    
 
 
@@ -46,24 +57,40 @@
     <menuitem name="Control de Hemodialisis" id="menu_p" web_icon="bienes,static/description/bienes.png"/>
         
         
-        <!-- Menu Principal Control Hemodilisis-->
-        <menuitem name="Información Registro" id="menu_registro" parent="menu_p" />
+        <!-- Menu Principal pacientes-->
+        <menuitem name="Pacientes" id="menu_paciente" parent="menu_p" />
       
         <!-- Menu de Paciente -->
-            <menuitem name="Registro Paciente" id="menu_registro_paciente" parent="menu_registro" action="action_paciente"/>
-        <!-- Medico -->
-            <menuitem name="Registro Médico" id="menu_registro_medico" parent="menu_registro" action="action_medico"/>
+            <menuitem name="Registro Paciente" id="menu_registro_paciente" parent="menu_paciente" action="action_paciente"/>
+            
+            
+        <!-- Menu Principal Medico-->
+        <menuitem name="Médicos" id="menu_medico" parent="menu_p" />
+      
+        <!-- Menu de Médico -->
+            <menuitem name="Registro Médico" id="menu_registro_medico" parent="menu_medico" action="action_medico"/>
+
+
+        <!-- Menu Principal Control Hemodilisis-->
+        <menuitem name="Control de Hemodialisis" id="menu_control_hemodialisis" parent="menu_p" />
+      
+        <!-- Menu de Registro de dialisis -->
+            <menuitem name="Sesiones de Diálisis" id="menu_registro_tratamiento" parent="menu_control_hemodialisis" action="action_tratamiento"/>
+
+
+
+        <!-- Menu Principal Maquina-->
+        <menuitem name="Maquinas" id="menu_maquinas" parent="menu_p" />
 
         <!-- Maquina -->
-            <menuitem name="Registro Maquina" id="menu_registro_maquina" parent="menu_registro" action="action_maquina"/>
+            <menuitem name="Registro Maquina" id="menu_registro_maquina" parent="menu_maquinas" action="action_maquina"/>
 
 
 
-        <!-- Menu Principal Control Hemodilisis-->
-        <menuitem name="Control de Hemodialisis" id="menu_registro" parent="menu_p" />
-      
-        <!-- Menu de Paciente -->
-            <menuitem name="Registro Tratamiento" id="menu_registro_tratamiento" parent="menu_registro" action="action_tratamiento"/>
+
+        
+        
+
 
 
 

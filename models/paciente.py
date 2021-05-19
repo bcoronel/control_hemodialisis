@@ -37,7 +37,7 @@ class paciente(models.Model):
     fecha_nacimiento = fields.Date(string='Fecha Nacimiento', help='Registre Fecha de Nacimiento del Paciente', required=True)
     edad = fields.Integer('Edad', help='Registre edad del Paciente', required=True)
     conclusiones = fields.Text('Conclusiones', help='Conclusiones')
- 
+    hemodialisis_medico_id = fields.Many2one('hemodialisis_medico', string="Médico Tratante", required=True)
     hemodialisis_tratamiento_ids = fields.One2many('hemodialisis_tratamiento','hemodialisis_paciente_id', string="Paciente", deleted="cascade",
                           help='Registra las Hemodialisis', required=True)    
     _sql_constraints = [('cedula', 'unique(cedula)', 'La cedula del paciente, debe ser Unica!')]

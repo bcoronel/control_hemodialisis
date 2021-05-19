@@ -35,5 +35,7 @@ class medico(models.Model):
     
     cedula = fields.Integer('Nro. Cedula', size=15, help='Registre Nro. Cedula del Medico', required=True)
     nombre = fields.Char(string='Apellido(s), Nombre(s)', size=40, help='Registre Apellido(s), Nombre(s) del Medico', required=True)
+    hemodialisis_paciente_ids = fields.One2many('hemodialisis_paciente','id', string="Pacientes", deleted="cascade",
+                          help='Registra las Hemodialisis', required=True)    
     _sql_constraints = [('cedula', 'unique(cedula)', 'La cedula del Medico, debe ser Unica!')]
 

@@ -18,12 +18,13 @@
             'views/paciente_view.xml',
             'views/medico_view.xml',
             'views/tratamiento_view.xml',
+            'wizard/reporte_historial_paciente_wizard.xml',
             
-            #'report/bien_encabezado_inventario_template.xml',
-            #'report/ficha_bienes_inventariados_template.xml',
+            'report/hemodialisis_encabezado_hemodialisis_template.xml',
+            'report/listado_historial_paciente_template.xml',
             #'report/resultado_bienes_inventario_template.xml',
 
-            #'wizard/ficha_bien_oficina_reporte_wizard.xml',
+
             #'wizard/listado_bien_grupo_reporte_wizard.xml',
             #'wizard/listado_bien_clasificacion_marca_reporte_wizard.xml',
             #'wizard/listado_bienes_sedes_reporte_wizard.xml'

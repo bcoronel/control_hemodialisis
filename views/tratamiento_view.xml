@@ -8,20 +8,18 @@
         <field name="model">hemodialisis_tratamiento</field>
         <field name="type">form</field>
         <field name="arch" type="xml">
-            <form string="Registro de Tratamiento">
+            <form string="Registro de Sesión De Diálisis">
                 <sheet>
                  <notebook>
-                     <page string="Tratamiento">   
+                     <page string="Sesión de Diálisis">   
                          <sheet>
-                             <hr style="width:100%; border-color:  #cadff6  ;"></hr>
-                             <separator colspan="4" string="Identificación Paciente / Médico y Maquina Utilizada" style="font-size:14px;"/>
+                             <separator colspan="4" string="Identificación Paciente / Maquina Utilizada" style="font-size:14px;"/>
 
                              <group col="4" colspan="2">
                                  <field name="hemodialisis_paciente_id" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'/>
                                  <field name="nombre_paciente" attrs="{'readonly': True}"/>
                              </group>
                              <group col="2" colspan="2">    
-                                 <field name="hemodialisis_medico_id" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'/>
                                  <field name="hemodialisis_maquina_id" options='{"no_open": True,"no_create": 1, "no_create_edit": 1}'/>
                              </group> 
 
@@ -31,8 +29,8 @@
                              <group col="4" colspan="2">
                                  <field name="fecha_tratamiento"/>
                                  <field name="duracion"/>
-                                 <field name="Peso_pre_hd"/>
-                                 <field name="Peso_post_hd"/>
+                                 <field name="peso_pre_hd"/>
+                                 <field name="peso_post_hd"/>
                                  <field name="balance"/>
                              </group> 
 
@@ -41,17 +39,34 @@
                                  <field name="ta_pre"/>
                                  <field name="ta_post"/>
                                  <field name="heparina"/>
-                                 <field name="transfución"/>
+                                 <field name="transfucion"/>
+                             </group>
+                         <hr style="width:100%; border-color:  #cadff6  ;"></hr>    
+                         </sheet>    
+                     </page>         
+
+                     <page string="Tratamiento PRE / POST">   
+                         <sheet>
+                             <separator colspan="4" string="Tratamiento" style="font-size:14px;"/>
+                             <group col="2" colspan="4">
+                                 <field name="tratamiento_pre"/>
+                                 <field name="tratamiento_post"/>
                              </group> 
-                             
-                             <group col="2" colspan="2">
-                                 <field name="observacion"/>
-                             </group> 
+                             <hr style="width:100%; border-color:  #cadff6  ;"></hr>   
                          </sheet>
                          
                          
                      </page> 
                      
+                     <page string="Observación">   
+                         <sheet>
+                              <hr style="width:100%; border-color:  #cadff6  ;"></hr>
+                             <group col="2" colspan="2">
+                                 <field name="observacion"/>
+                             </group> 
+                             <hr style="width:100%; border-color:  #cadff6  ;"></hr>
+                         </sheet>    
+                     </page>
                     </notebook>
                </sheet>
             </form>
@@ -69,8 +84,7 @@
              <field name="fecha_tratamiento"/>
              <field name="hemodialisis_paciente_id"/>
              <field name="nombre_paciente"/>
-             <field name="hemodialisis_paciente_id"/>
-             <field name="hemodialisis_medico_id"/>
+             <field name="hemodialisis_maquina_id"/>
          </tree>
      </field>
 
