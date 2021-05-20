@@ -11,9 +11,9 @@
         <div style="text-align:center">
             <span style="font-weight:700; font-size:16px" t-esc="titulo"/>
         </div>
-        <table style="border:1px solid black; width:100%">
+        <table style="width:100%">
         <tr>
-            <td style="border:1px solid black; height:20px">
+            <td style="height:20px">
                 <t t-if='sw_fecha == 0'>
                     <span style="font-size:14px; font-weight:700; margin-left:1px">FECHA SESIÓN: </span>
                     <span t-esc="intervalo" style="font-size:14px; margin-left:2px "/>
@@ -26,6 +26,53 @@
         </tr>
         </table>
 </template>
+
+
+<template id="encabezado_paciente_medico">
+        <div style="text-align:left">
+            <span style="font-weight:700"><small>FECHA: </small></span><small t-esc="medico.fecha_actual()"/>
+        </div> 
+        <br/>       
+        <div style="text-align:center">
+            <span style="font-weight:700; font-size:16px">LISTADO DE PACIENTES POR MÉDICO</span>
+        </div>
+
+        <div style="text-align:left">
+            <span style="font-weight:700; font-size:14px">MÉDICO: </span>
+        </div>
+        <br/>
+        
+        <div style="text-align:left">
+            <span style="font-weight:700; font-size:14px">PACIENTES: </span>
+        </div>        
+        
+</template>
+
+
+<template id="encabezado_tabla_paciente_medico">
+        <table style="border:1px solid black; width:100%">
+        <tr style=" height:50px" align="center">
+            <td style="border:1px solid black; width:8%" >
+                <span style="font-size:6px; font-weight:700;">N° </span>
+            </td>
+            
+            <td style="border:1px solid black; width:10%">
+                <span style="font-size:12px; font-weight:700">CEDULA </span>
+            </td>
+            <td style="border:1px solid black; width:57%">
+                <span style="font-size:12px; font-weight:700">APELLIDO(S), NOMBRE(S) </span>
+            </td>
+            
+            <td style="border:1px solid black; width:15%">
+                <span style="font-size:12px; font-weight:700">FECHA NACIMIENTO </span>
+            </td>
+            <td style="border:1px solid black; width:10%">
+                <span style="font-size:12px; font-weight:700">EDAD </span>
+            </td>
+        </tr>
+        </table>
+</template> 
+
 
 
 

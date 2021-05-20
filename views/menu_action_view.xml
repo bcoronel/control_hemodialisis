@@ -13,8 +13,8 @@
         <field name="res_model">hemodialisis_paciente</field>
         <field name="view_mode">tree,form</field>
    </record>
-
-
+   
+   
     <!-- action de Medico --> 
     <record model="ir.actions.act_window" id="action_medico">
         <field name="name">Registro Médico</field>

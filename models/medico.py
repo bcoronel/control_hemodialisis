@@ -32,6 +32,11 @@ class medico(models.Model):
     """Registra los Pacientes"""
     _name = 'hemodialisis_medico'
     _rec_name = 'nombre'
+
+    def fecha_actual(self):
+        today = fields.Datetime.now()
+        fecha = today.strftime('%d/%m/%Y')        
+        return fecha       
     
     cedula = fields.Integer('Nro. Cedula', size=15, help='Registre Nro. Cedula del Medico', required=True)
     nombre = fields.Char(string='Apellido(s), Nombre(s)', size=40, help='Registre Apellido(s), Nombre(s) del Medico', required=True)

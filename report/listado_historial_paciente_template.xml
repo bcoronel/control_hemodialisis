@@ -9,7 +9,7 @@
   report_type="qweb-html"
   name="hemodialisis.listado_historial_paciente_render"
   file="hemodialisis.listado_historial_paciente_template"
-  
+  paperformat="hemodialisis.paperformat_listado_historial_paciente"
   menu="False"/>
   
   <!--paperformat="hemodialisis.paperformat_listado_historial_paciente"-->

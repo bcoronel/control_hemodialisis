@@ -22,6 +22,7 @@
             
             'report/hemodialisis_encabezado_hemodialisis_template.xml',
             'report/listado_historial_paciente_template.xml',
+            'report/listado_paciente_medico_template.xml',
             #'report/resultado_bienes_inventario_template.xml',
 
 

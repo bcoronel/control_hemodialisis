@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<report
+  id="action_report_listado_paciente_medico"
+  string="Listado de Pacientes Por Médico"
+  model="hemodialisis_medico"
+  report_type="qweb-html"
+  name = "hemodialisis.listado_paciente_medico_template"
+  menu="True"
+/>
+
+<!--  paperformat="hemodialisis.paperformat_listado_paciente_medico"-->
+              
+<template id="listado_paciente_medico_template">
+    <t t-call="web.html_container">
+    <!-- inicio de encabezado -->        
+        <!--<t t-set='linea' t-value='0'/>  Se activa para controlar las filas del reporte  -->
+        <t t-set='swPagina' t-value='0'/> 
+
+        <t t-foreach="docs" t-as="medico">
+            <t t-if='swPagina==1'>
+                <!--Salto de pagina cuando sean varias paginas -->
+                <div style='page-break-after: always;'></div>
+            </t>
+            <t t-if='swPagina==0'>
+                <!--Permite controlar los saltos de pagina--> 
+                <t t-set='swPagina' t-value='1'/>
+            </t>
+            
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                <!--<t t-set='swPagina' t-value='0'/>--> 
+                <div class="page">
+                    <t t-call="hemodialisis.encabezado_paciente_medico"></t>
+                    
+                    <t t-call="hemodialisis.encabezado_tabla_paciente_medico"></t>
+                    <t t-set='linea' t-value='0'/>
+                    <t t-set='nroPaciente' t-value='0'/>
+                    <t t-foreach="hemodialisis_paciente_ids" t-as="paciente">
+                        <t t-set='linea' t-value='linea+ 1'/>
+                        <t t-set='nroPaciente' t-value='nroPaciente+1'/>
+                        <table style="border:1px solid black; width:100%">
+                        <tr style=" height:25px" align="center">
+                            <td style="border:1px solid black; width:8%" >
+                                <span style="font-size:11px;" t-esc="nroPaciente" />
+                            </td>
+                            
+                            <td style="border:1px solid black; width:10%">
+                                <span style="font-size:11px;" t-esc="paciente.cedula" />
+                            </td>
+                            <td style="border:1px solid black; width:57%" >
+                                <span style="font-size:11px;" t-esc="paciente.nombre" />
+                            </td>                                                                          
+                            <td style="border:1px solid black; width:15%">
+                                <span style="font-size:11px;" t-esc="paciente.fecha_nacimiento" />
+                            </td>
+                            <td style="border:1px solid black; width:10%">
+                                <span style="font-size:11px;" t-esc="paciente.edad" />
+                            </td>
+                        </tr>
+                        </table>
+                        <t t-if='linea==15'>
+                            <div style='page-break-after: always;'></div>                                       
+                            <t t-set='linea' t-value='0'/>  
+                            <t t-call="hemodialisis.encabezado_paciente_medico"></t>
+                            <t t-call="hemodialisis.encabezado_tabla_paciente_medico"></t>
+                        </t>    
+                    </t>    
+                </div>  <!-- div de page -->
+                </t>  <!-- Fin del external-layaut-->
+            </t>    <!-- Fin de Container interno-->
+        
+        </t>  <!-- Fin del foreach -->   
+    </t> <!-- Fin container principal -->             
+</template>
+
+
+<record id="paperformat_listado_paciente_medico" model="report.paperformat">
+    <field name="name">European A4</field>
+    <field name="default" eval="True" />
+    <field name="format">A4</field>
+    <field name="page_height">0</field>
+    <field name="page_width">0</field>
+    <field name="orientation">Portrait</field>
+    <!--<field name="orientation">Landscape</field>-->
+    <field name="margin_top">45</field>
+    <field name="margin_bottom">20</field>
+    <field name="margin_left">5</field>
+    <field name="margin_right">5</field>
+    <field name="header_line" eval="False" />
+    <field name="header_spacing">25</field>
+    <field name="dpi">90</field>
+</record>
+
+
+</odoo>
+
