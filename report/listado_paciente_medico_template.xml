@@ -38,7 +38,7 @@
                     <t t-call="hemodialisis.encabezado_tabla_paciente_medico"></t>
                     <t t-set='linea' t-value='0'/>
                     <t t-set='nroPaciente' t-value='0'/>
-                    <t t-foreach="hemodialisis_paciente_ids" t-as="paciente">
+                    <t t-foreach="medico.hemodialisis_paciente_ids" t-as="paciente">
                         <t t-set='linea' t-value='linea+ 1'/>
                         <t t-set='nroPaciente' t-value='nroPaciente+1'/>
                         <table style="border:1px solid black; width:100%">
